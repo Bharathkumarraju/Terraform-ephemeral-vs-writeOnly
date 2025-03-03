@@ -10,10 +10,10 @@ resource "aws_db_instance" "example" {
   allocated_storage    = 20
   engine              = "mysql"
   instance_class      = "db.t3.micro"
-  db_name             = "exampledb"
+  db_name             = "exampledb1"
   username           = "admin"
 
-  master_password = random_password.db_password.result
+  password = random_password.db_password.result
 
   storage_encrypted  = true
   skip_final_snapshot = true

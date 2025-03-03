@@ -10,7 +10,7 @@ resource "aws_db_instance" "example" {
   allocated_storage    = 20
   engine              = "mysql"
   instance_class      = "db.t3.micro"
-  db_name             = "exampledb"
+  db_name             = "exampledb2"
   username           = "admin"
 
   #  Using write-only password (WILL NOT be stored in state!)
