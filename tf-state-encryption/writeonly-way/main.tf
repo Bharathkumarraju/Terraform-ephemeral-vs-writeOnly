@@ -1,10 +1,5 @@
-# Generate a secure random password (not stored in state)
-resource "random_password" "db_password" {
-  length  = 16
-  special = false
-  numeric = true
-  upper   = true
-  lower   = true
+data "aws_ssm_parameter" "db_password" {
+  name = "/dev/db_password"
 }
 
 resource "aws_db_instance" "example2" {
@@ -15,7 +10,7 @@ resource "aws_db_instance" "example2" {
   username          = "admin"
 
   # Use the new write-only attribute (password will NOT be stored in state)
-  password_wo         = random_password.db_password.result
+  password_wo         = data.aws_ssm_parameter.db_password.value
   password_wo_version = 1
 
   storage_encrypted   = true

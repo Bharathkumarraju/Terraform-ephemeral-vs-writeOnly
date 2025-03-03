@@ -1,10 +1,5 @@
-# Generate an ephemeral password that will be stored in state
-resource "random_password" "db_password" {
-  length  = 16
-  special = false
-  numeric = true
-  upper   = true
-  lower   = true
+data "aws_ssm_parameter" "db_password" {
+  name = "/dev/db_password"
 }
 
 #  Password for RDS stored in state
@@ -15,7 +10,7 @@ resource "aws_db_instance" "example1" {
   db_name           = "exampledb1"
   username          = "admin"
 
-  password = random_password.db_password.result
+  password = data.aws_ssm_parameter.db_password.value
 
   storage_encrypted   = true
   skip_final_snapshot = true
