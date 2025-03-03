@@ -1,2 +1,2 @@
-# Terraform-ephemeral-vs-writeOnly
+# Terraform-writeOnly
 Latest Terraform improvements
