@@ -1,12 +1,14 @@
 # Generate an ephemeral password that will be stored in state
 resource "random_password" "db_password" {
   length           = 16
-  special          = true
-  override_special = "!@#%^&*()-_=+[]{}"
+  special          = false
+  numeric          = true
+  upper            = true
+  lower            = true
 }
 
 #  Password for RDS stored in state
-resource "aws_db_instance" "example" {
+resource "aws_db_instance" "example1" {
   allocated_storage    = 20
   engine              = "mysql"
   instance_class      = "db.t3.micro"
@@ -21,5 +23,5 @@ resource "aws_db_instance" "example" {
 
 
 output "rds_instance_endpoint" {
-  value = aws_db_instance.example.endpoint
+  value = aws_db_instance.example1.endpoint
 }
