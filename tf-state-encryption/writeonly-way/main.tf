@@ -15,7 +15,7 @@ resource "aws_db_instance" "example2" {
   username           = "admin"
 
   # Use the new write-only attribute (password will NOT be stored in state)
-  master_password_wo = random_password.db_password.result
+  password_wo = random_password.db_password.result
 
   storage_encrypted  = true
   skip_final_snapshot = true
