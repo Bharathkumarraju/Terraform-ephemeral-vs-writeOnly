@@ -25,3 +25,20 @@ output "kms_alias" {
   description = "The name of the KMS key alias"
   value       = aws_kms_alias.this.name
 }
+
+/*
+################################################################################
+# DynamoDB outputs
+################################################################################
+
+output "dynamodb_arn" {
+  description = "The arn of the table"
+  value       = aws_dynamodb_table.this.arn
+}
+
+output "dynamodb_id" {
+  description = "The name of the table"
+  value       = aws_dynamodb_table.this.id
+}
+*/
+
